@@ -11,7 +11,15 @@ namespace MyAspNetCoreApp.Web.Controllers
         public IActionResult Index2()
         {
             //return View();
-            return RedirectToAction("Index","Ornek");
+            return RedirectToAction("Index", "Ornek");
+        }
+        public IActionResult ParametreView(int id)
+        {
+            return RedirectToAction("JsonResultParametre", "Ornek", new { id = id });
+        }
+        public IActionResult JsonResultParametre(int id)
+        {
+            return Json(new { Id = id });
         }
         public IActionResult ContentResult()
         {
