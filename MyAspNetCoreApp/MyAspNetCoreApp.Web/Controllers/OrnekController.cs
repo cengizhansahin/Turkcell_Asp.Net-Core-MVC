@@ -8,6 +8,11 @@ namespace MyAspNetCoreApp.Web.Controllers
         {
             return View();
         }
+        public IActionResult Index2()
+        {
+            //return View();
+            return RedirectToAction("Index","Ornek");
+        }
         public IActionResult ContentResult()
         {
             return Content("ContentResult");
