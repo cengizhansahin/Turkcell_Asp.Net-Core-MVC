@@ -12,6 +12,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
         public IActionResult Index3()
         {
+            var surname = TempData["surname"];
             return View();
         }
         public IActionResult Index2()
