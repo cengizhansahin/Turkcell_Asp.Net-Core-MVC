@@ -1,7 +1,18 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
 }
 
 <h1>Örnek Controller, Index sayfası</h1>
 
+@{
+    var name = ViewBag.name;
+}
+<p>@name</p>
+<hr />
+<p>Yaş: @ViewData["Age"]</p>
+<h1>İsimler</h1>
+@foreach (var item in ViewData["Names"] as List<string>)
+{
+    <p>@item</p>
+}
+<p>@ViewBag.person.Id - @ViewBag.person.name - @ViewBag.person.age</p>
