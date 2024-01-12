@@ -1,8 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var alert = "bu bir c# kodudur!";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<div>Günün tarihi: @DateTime.Now.ToShortDateString()</div>
+@{
+    var datetime = DateTime.Now.ToShortDateString();
+    var message = "Merhaba";
+    @: bugünün tarihi: @datetime
+    <div>mesaj @message</div>
+    <text>Bugünün tarihiii: @datetime</text>
+}
+@if (1 == 1)
+{
+    <h1>@alert</h1>
+    <p>Doğru</p>
+}
+else
+{
+    <p>Yanlış</p>
+}
+@foreach (var item in Enumerable.Range(1, 10).ToList())
+{
+    <p>@item</p>
+}
