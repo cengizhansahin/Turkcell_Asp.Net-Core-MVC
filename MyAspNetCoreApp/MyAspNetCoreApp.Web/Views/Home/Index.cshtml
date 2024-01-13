@@ -2,7 +2,12 @@
     ViewData["Title"] = "Home Page";
     var alert = "bu bir c# kodudur!";
 }
-
+@section Scripts {
+    <script type="text/javascript">
+        // alert("Sayfamıza hoşgeldiniz.")
+        $(document).ready(() =>  console.log("Sayfamıza hoşgeldiniz"))
+    </script>
+}
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
