@@ -10,6 +10,7 @@
             <th>İsim</th>
             <th>Fiyat</th>
             <th>Stok</th>
+            <th>İşlem</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
                 <td>@item.Name</td>
                 <td>@item.Price</td>
                 <td>@item.Stock</td>
+                <td><a asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a></td>
             </tr>
         }
     </tbody>
