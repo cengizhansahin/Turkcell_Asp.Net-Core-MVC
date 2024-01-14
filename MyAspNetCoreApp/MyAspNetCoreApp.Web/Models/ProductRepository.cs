@@ -2,7 +2,7 @@
 {
     public class ProductRepository
     {
-        private static List<Product> _products;
+        private static List<Product> _products = new List<Product>();
         public List<Product> GettAll() => _products;
         public void AddProduct(Product product) => _products.Add(product);
         public void RemoveProduct(int id)
