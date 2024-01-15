@@ -5,14 +5,28 @@ namespace MyAspNetCoreApp.Web.Controllers
 {
     public class ProductController : Controller
     {
+        private AppDbContext _context;
         private readonly ProductRepository _productRepository;
-        public ProductController()
+        public ProductController(AppDbContext context)
         {
+            //DI Container
+            //Dependency Injection Pattern
             _productRepository = new ProductRepository();
+            _context = context;
+            //Linq method
+            if (!_context.Products.Any())
+            {
+                _context.Products.AddRange(
+                new Product() { Name = "Kalem1", Price = 100, Stock = 100 },
+                new Product() { Name = "Kalem2", Price = 200, Stock = 200 },
+                new Product() { Name = "Kalem3", Price = 300, Stock = 300 }
+                );
+                _context.SaveChanges();
+            }
         }
         public IActionResult Index()
         {
-            var products = _productRepository.GettAll();
+            var products = _context.Products.ToList();
             return View(products);
         }
         public IActionResult Remove(int id)
