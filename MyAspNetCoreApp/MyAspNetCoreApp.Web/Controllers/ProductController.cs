@@ -31,7 +31,10 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
         public IActionResult Remove(int id)
         {
-            _productRepository.RemoveProduct(id);
+            //_productRepository.RemoveProduct(id);
+            Product deletedProduct = _context.Products.FirstOrDefault(p => p.Id == id);
+            _context.Products.Remove(deletedProduct);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
         public IActionResult Add()
