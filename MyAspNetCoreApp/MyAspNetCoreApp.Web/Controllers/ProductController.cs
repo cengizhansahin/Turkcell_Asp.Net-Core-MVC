@@ -17,9 +17,9 @@ namespace MyAspNetCoreApp.Web.Controllers
             if (!_context.Products.Any())
             {
                 _context.Products.AddRange(
-                new Product() { Name = "Kalem1", Price = 100, Stock = 100 },
-                new Product() { Name = "Kalem2", Price = 200, Stock = 200 },
-                new Product() { Name = "Kalem3", Price = 300, Stock = 300 }
+                new Product() { Name = "Kalem1", Price = 100, Stock = 100, Color = "White", Width = 10, Height = 20 },
+                new Product() { Name = "Kalem2", Price = 200, Stock = 200, Color = "White", Width = 10, Height = 20 },
+                new Product() { Name = "Kalem3", Price = 300, Stock = 300, Color = "White", Width = 10, Height = 20 }
                 );
                 _context.SaveChanges();
             }
