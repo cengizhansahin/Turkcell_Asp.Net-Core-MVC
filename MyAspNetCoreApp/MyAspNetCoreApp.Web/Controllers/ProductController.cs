@@ -14,15 +14,15 @@ namespace MyAspNetCoreApp.Web.Controllers
             _productRepository = new ProductRepository();
             _context = context;
             //Linq method
-            if (!_context.Products.Any())
-            {
-                _context.Products.AddRange(
-                new Product() { Name = "Kalem1", Price = 100, Stock = 100, Color = "White" },
-                new Product() { Name = "Kalem2", Price = 200, Stock = 200, Color = "White" },
-                new Product() { Name = "Kalem3", Price = 300, Stock = 300, Color = "White" }
-                );
-                _context.SaveChanges();
-            }
+            //if (!_context.Products.Any())
+            //{
+            //    _context.Products.AddRange(
+            //    new Product() { Name = "Kalem1", Price = 100, Stock = 100, Color = "White" },
+            //    new Product() { Name = "Kalem2", Price = 200, Stock = 200, Color = "White" },
+            //    new Product() { Name = "Kalem3", Price = 300, Stock = 300, Color = "White" }
+            //    );
+            //    _context.SaveChanges();
+            //}
         }
         public IActionResult Index()
         {
@@ -44,7 +44,15 @@ namespace MyAspNetCoreApp.Web.Controllers
         [HttpPost]
         public IActionResult SaveProduct(Product product)
         {
-            return View();
+            // 1.Yöntem
+            var name = HttpContext.Request.Form["Name"].ToString();
+            var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
+            var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());
+            var color = HttpContext.Request.Form["Color"].ToString();
+            Product newProduct = new() { Name = name, Price = price, Color = color, Stock = stock };
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
         public IActionResult Update(int id)
         {
