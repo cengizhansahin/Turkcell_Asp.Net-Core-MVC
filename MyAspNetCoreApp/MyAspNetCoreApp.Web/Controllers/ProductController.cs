@@ -42,14 +42,19 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SaveProduct(Product product)
+        public IActionResult Add(string Name, decimal Price, int Stock, string Color)
         {
+            // Request Header-Body
+
+
+
             // 1.Yöntem
-            var name = HttpContext.Request.Form["Name"].ToString();
-            var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
-            var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());
-            var color = HttpContext.Request.Form["Color"].ToString();
-            Product newProduct = new() { Name = name, Price = price, Color = color, Stock = stock };
+            //var name = HttpContext.Request.Form["Name"].ToString();
+            //var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
+            //var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());
+            //var color = HttpContext.Request.Form["Color"].ToString();
+
+            Product newProduct = new() { Name = Name, Price = Price, Color = Color, Stock = Stock };
             _context.Products.Add(newProduct);
             _context.SaveChanges();
             return RedirectToAction("Index");
