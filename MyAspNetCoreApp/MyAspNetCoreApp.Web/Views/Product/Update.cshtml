@@ -1,7 +1,26 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Update";
 }
-
+@model Product
 <h1>Ürün Güncelleme</h1>
 
+<form asp-controller="Product" asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label>Ürün İsmi</label>
+        <input asp-for="Name" />
+    </div>
+    <div class="mb-3">
+        <label>Ürün Fiyat</label>
+        <input asp-for="Price" />
+    </div>
+    <div class="mb-3">
+        <label>Ürün Stok</label>
+        <input asp-for="Stock" />
+    </div>
+    <div class="mb-3">
+        <label>Ürün Renk</label>
+        <input asp-for="Color" />
+    </div>
+    <button type="submit">Güncelle</button>
+</form>

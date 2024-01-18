@@ -64,7 +64,15 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
         public IActionResult Update(int id)
         {
-            return View();
+            var product = _context.Products.FirstOrDefault(product => product.Id == id);
+            return View(product);
+        }
+        [HttpPost]
+        public IActionResult Update(Product obj)
+        {
+            _context.Products.Update(obj);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
