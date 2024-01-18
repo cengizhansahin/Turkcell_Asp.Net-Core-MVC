@@ -69,8 +69,9 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View(product);
         }
         [HttpPost]
-        public IActionResult Update(Product obj)
+        public IActionResult Update(Product obj, int productId,string type)
         {
+            obj.Id = productId;
             _context.Products.Update(obj);
             _context.SaveChanges();
             TempData["status"] = "Ürün başarıyla güncellendi.";
