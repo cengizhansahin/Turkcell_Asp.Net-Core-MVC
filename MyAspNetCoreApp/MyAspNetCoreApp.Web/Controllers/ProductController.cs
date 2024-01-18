@@ -27,10 +27,11 @@ namespace MyAspNetCoreApp.Web.Controllers
             //    _context.SaveChanges();
             //}
         }
-        public IActionResult Index()
+        public IActionResult Index([FromServices]IHelper helper2)
         {
             var text = "Asp.Net";
-            
+            var upperText = _helper.Upper(text);
+            var status = _helper.Equals(helper2);
             //IHelper helper = new Helper();
             var products = _context.Products.ToList();
             return View(products);
