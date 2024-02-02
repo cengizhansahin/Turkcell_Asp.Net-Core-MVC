@@ -6,7 +6,7 @@
 
 <form asp-controller="Product" asp-action="Add" method="post">
     <div class="mb-3">
-        <label for="Name" class="form-label">Ürün İsmi</label>
+        <label asp-for="Name" class="form-label">Ürün İsmi</label>
         <input asp-for="Name" class="form-control" />
     </div>
     <div class="mb-3">
@@ -31,11 +31,15 @@
     @foreach (var item in ViewBag.Expire as Dictionary<string, int>)
     {
         <div class="form-check">
-            <input class="form-check-input" type="radio" asp-for="Expire" value="@item.Value">
-            <label class="form-check-label" for="Expire">
+            <input class="form-check-input" type="radio" asp-for="Expire" id="Expire_@item.Key" value="@item.Value">
+            <label class="form-check-label" for="Expire_@item.Key">
                 @item.Key
             </label>
         </div>
     }
+    <div class="form-floating">
+        <textarea asp-for="Description" class="form-control" placeholder="Açıklama yazınız" style="height: 100px"></textarea>
+        <label for="Description">Ürün Açıklama</label>
+    </div>
     <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 </form>
