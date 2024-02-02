@@ -7,15 +7,13 @@ namespace MyAspNetCoreApp.Web.Controllers
     public class ProductController : Controller
     {
         private AppDbContext _context;
-        private IHelper _helper;
         private readonly ProductRepository _productRepository;
-        public ProductController(AppDbContext context, IHelper helper)
+        public ProductController(AppDbContext context)
         {
             //DI Container
             //Dependency Injection Pattern
             _productRepository = new ProductRepository();
             _context = context;
-            _helper = helper;
             //Linq method
             //if (!_context.Products.Any())
             //{
@@ -27,12 +25,8 @@ namespace MyAspNetCoreApp.Web.Controllers
             //    _context.SaveChanges();
             //}
         }
-        public IActionResult Index([FromServices]IHelper helper2)
+        public IActionResult Index()
         {
-            var text = "Asp.Net";
-            var upperText = _helper.Upper(text);
-            var status = _helper.Equals(helper2);
-            //IHelper helper = new Helper();
             var products = _context.Products.ToList();
             return View(products);
         }
@@ -46,6 +40,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
         public IActionResult Add()
         {
+            ViewBag.Expire = new List<string>() { "1 ay", "3 ay", "6 ay", "12 ay" };
             return View();
         }
         [HttpPost]
@@ -76,7 +71,7 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View(product);
         }
         [HttpPost]
-        public IActionResult Update(Product obj, int productId,string type)
+        public IActionResult Update(Product obj, int productId, string type)
         {
             obj.Id = productId;
             _context.Products.Update(obj);
