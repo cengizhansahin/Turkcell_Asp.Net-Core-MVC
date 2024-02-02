@@ -6,20 +6,26 @@
 
 <form asp-controller="Product" asp-action="Add" method="post">
     <div class="mb-3">
-        <label asp-for="Name" class="form-label">Ürün İsmi</label>
+        <label for="Name" class="form-label">Ürün İsmi</label>
         <input asp-for="Name" class="form-control" />
     </div>
     <div class="mb-3">
-        <label asp-for="Price" class="form-label">Ürün Fiyat</label>
+        <label for="Price" class="form-label">Ürün Fiyat</label>
         <input asp-for="Price" class="form-control" />
     </div>
     <div class="mb-3">
-        <label asp-for="Stock" class="form-label">Ürün Stok</label>
-        <input type="text" asp-for="Stock" class="form-control" />
+        <label for="Stock" class="form-label">Ürün Stok</label>
+        <input asp-for="Stock" class="form-control" />
     </div>
     <div class="mb-3">
-        <label asp-for="Color" class="form-label">Ürün Renk</label>
+        <label for="Color" class="form-label">Ürün Renk</label>
         <input asp-for="Color" class="form-control" />
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" asp-for="IsPublish">
+        <label class="form-check-label" for="IsPublish">
+            Yayınlansın mı?
+        </label>
     </div>
     <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 </form>

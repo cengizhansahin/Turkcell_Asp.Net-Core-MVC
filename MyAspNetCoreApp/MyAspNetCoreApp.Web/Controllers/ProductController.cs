@@ -65,7 +65,7 @@ namespace MyAspNetCoreApp.Web.Controllers
             //Product newProduct = new() { Name = Name, Price = Price, Color = Color, Stock = Stock };
 
 
-            _context.Products.Add(newProduct);
+            _ = _context.Products.Add(newProduct);
             _context.SaveChanges();
             TempData["status"] = "Ürün başarıyla eklendi.";
             return RedirectToAction("Index");
