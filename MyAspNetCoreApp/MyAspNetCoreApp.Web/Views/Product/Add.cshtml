@@ -26,15 +26,16 @@
         <label class="form-check-label" for="IsPublish">
             Yayınlansın mı?
         </label>
-        @foreach (var item in ViewBag.Expire as List<string>)
-        {
-            <div class="form-check">
-                <input class="form-check-input" type="radio" asp-for="Expire" value="@item">
-                <label class="form-check-label" for="Expire">
-                    @item
-                </label>
-            </div>
-        }
     </div>
+    <span>Ürün kaç ay satışta kalacak?</span>
+    @foreach (var item in ViewBag.Expire as Dictionary<string, int>)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="Expire" value="@item.Value">
+            <label class="form-check-label" for="Expire">
+                @item.Key
+            </label>
+        </div>
+    }
     <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 </form>
