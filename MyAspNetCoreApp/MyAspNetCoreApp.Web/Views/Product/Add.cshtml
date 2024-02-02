@@ -6,20 +6,20 @@
 
 <form asp-controller="Product" asp-action="Add" method="post">
     <div class="mb-3">
-        <label>Ürün İsmi</label>
-        <input asp-for="Name" />
+        <label asp-for="Name" class="form-label">Ürün İsmi</label>
+        <input asp-for="Name" class="form-control" />
     </div>
     <div class="mb-3">
-        <label>Ürün Fiyat</label>
-        <input asp-for="Price" />
+        <label asp-for="Price" class="form-label">Ürün Fiyat</label>
+        <input asp-for="Price" class="form-control" />
     </div>
     <div class="mb-3">
-        <label>Ürün Stok</label>
-        <input asp-for="Stock" />
+        <label asp-for="Stock" class="form-label">Ürün Stok</label>
+        <input asp-for="Stock" class="form-control" />
     </div>
     <div class="mb-3">
-        <label>Ürün Renk</label>
-        <input asp-for="Color" />
+        <label asp-for="Color" class="form-label">Ürün Renk</label>
+        <input asp-for="Color" class="form-control" />
     </div>
-    <button type="submit">Kaydet</button>
+    <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 </form>
