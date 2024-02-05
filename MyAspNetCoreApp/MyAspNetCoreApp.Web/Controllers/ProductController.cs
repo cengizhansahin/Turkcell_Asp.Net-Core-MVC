@@ -49,7 +49,7 @@ namespace MyAspNetCoreApp.Web.Controllers
                 {"12 Ay",12 }
             };
             ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>() {
-                new ColorSelectList(){Data="Mavi",Value="1"},
+                new ColorSelectList(){Data="Mavi",Value="Mavi"},
                 new ColorSelectList(){Data="Kırmızı",Value="2"},
                 new ColorSelectList(){Data="Sarı",Value="3"}
             }, "Value", "Data");

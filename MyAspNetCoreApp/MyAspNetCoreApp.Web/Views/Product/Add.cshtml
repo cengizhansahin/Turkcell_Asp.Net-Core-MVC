@@ -44,5 +44,9 @@
         <textarea asp-for="Description" class="form-control" placeholder="Açıklama yazınız" style="height: 100px"></textarea>
         <label for="Description">Ürün Açıklama</label>
     </div>
+    <div class="mb-3">
+        <label asp-for="PublishDate" class="form-label">Ürün Yayınlanma Tarihi</label>
+        <input asp-for="PublishDate" class="form-control" />
+    </div>
     <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 </form>
