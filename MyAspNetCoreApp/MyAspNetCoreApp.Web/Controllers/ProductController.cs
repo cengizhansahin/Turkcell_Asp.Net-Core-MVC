@@ -79,13 +79,28 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
         public IActionResult Update(int id)
         {
+
             var product = _context.Products.FirstOrDefault(product => product.Id == id);
+
+            ViewBag.radioExpireValue = product.Expire;
+            ViewBag.Expire = new Dictionary<string, int>()
+            {
+                {"1 Ay",1 },
+                {"3 Ay",3},
+                {"6 Ay",6 },
+                {"12 Ay",12 }
+            };
+            ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>() {
+                new ColorSelectList(){Data="Mavi",Value="Mavi"},
+                new ColorSelectList(){Data="Kırmızı",Value="Kırmızı"},
+                new ColorSelectList(){Data="Sarı",Value="Sarı"}
+            }, "Value", "Data", product.Color);
+
             return View(product);
         }
         [HttpPost]
-        public IActionResult Update(Product obj, int productId, string type)
+        public IActionResult Update(Product obj)
         {
-            obj.Id = productId;
             _context.Products.Update(obj);
             _context.SaveChanges();
             TempData["status"] = "Ürün başarıyla güncellendi.";
