@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
 
@@ -47,6 +48,11 @@ namespace MyAspNetCoreApp.Web.Controllers
                 {"6 Ay",6 },
                 {"12 Ay",12 }
             };
+            ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>() {
+                new ColorSelectList(){Data="Mavi",Value="mavi"},
+                new ColorSelectList(){Data="Kırmızı",Value="Kırmızı"},
+                new ColorSelectList(){Data="Sarı",Value="Sarı"}
+            }, "Value", "Data");
             return View();
         }
         [HttpPost]
