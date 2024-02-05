@@ -18,8 +18,11 @@
         <input asp-for="Stock" class="form-control" />
     </div>
     <div class="mb-3">
-        <label for="Color" class="form-label">Ürün Renk</label>
-        <input asp-for="Color" class="form-control" />
+        @* <label for="Color" class="form-label">Ürün Renk</label>
+        <input asp-for="Color" class="form-control" /> *@
+        <select class="form-select" asp-for="Color" asp-items="@ViewBag.ColorSelect">
+            <option value="">Seçim Yapınız</option>
+        </select>
     </div>
     <div class="form-check">
         <input class="form-check-input" asp-for="IsPublish">
