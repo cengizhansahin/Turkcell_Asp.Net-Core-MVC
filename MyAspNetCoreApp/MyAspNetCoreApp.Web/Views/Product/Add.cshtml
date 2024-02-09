@@ -13,10 +13,14 @@
     <div class="mb-3">
         <label for="Price" class="form-label">Ürün Fiyat</label>
         <input asp-for="Price" class="form-control" />
+        <span class="text-danger" asp-validation-for="Price"></span>
+
     </div>
     <div class="mb-3">
         <label for="Stock" class="form-label">Ürün Stok</label>
         <input asp-for="Stock" class="form-control" />
+        <span class="text-danger" asp-validation-for="Stock"></span>
+
     </div>
     <div class="mb-3">
         @* <label for="Color" class="form-label">Ürün Renk</label>
@@ -44,6 +48,8 @@
     <div class="form-floating">
         <textarea asp-for="Description" class="form-control" placeholder="Açıklama yazınız" style="height: 100px"></textarea>
         <label for="Description">Ürün Açıklama</label>
+        <span class="text-danger" asp-validation-for="Description"></span>
+
     </div>
     <div class="mb-3">
         <label asp-for="PublishDate" class="form-label">Ürün Yayınlanma Tarihi</label>
