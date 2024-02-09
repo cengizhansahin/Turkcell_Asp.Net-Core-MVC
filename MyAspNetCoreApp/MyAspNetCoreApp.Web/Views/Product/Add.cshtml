@@ -14,11 +14,10 @@
         <label for="Price" class="form-label">Ürün Fiyat</label>
         <input asp-for="Price" class="form-control" />
         <span class="text-danger" asp-validation-for="Price"></span>
-
     </div>
     <div class="mb-3">
         <label for="Stock" class="form-label">Ürün Stok</label>
-        <input asp-for="Stock" class="form-control" />
+        <input type="number" asp-for="Stock" class="form-control" />
         <span class="text-danger" asp-validation-for="Stock"></span>
 
     </div>
