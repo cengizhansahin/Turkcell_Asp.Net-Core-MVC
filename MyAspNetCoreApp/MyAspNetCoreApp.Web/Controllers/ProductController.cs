@@ -1,20 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
+using MyAspNetCoreApp.Web.ViewModels;
 
 namespace MyAspNetCoreApp.Web.Controllers
 {
     public class ProductController : Controller
     {
         private AppDbContext _context;
+        private readonly IMapper _mapper;
         private readonly ProductRepository _productRepository;
-        public ProductController(AppDbContext context)
+        public ProductController(AppDbContext context, IMapper mapper)
         {
             //DI Container
             //Dependency Injection Pattern
             _productRepository = new ProductRepository();
             _context = context;
+            _mapper = mapper;
             //Linq method
             //if (!_context.Products.Any())
             //{
@@ -29,7 +33,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         public IActionResult Index()
         {
             var products = _context.Products.ToList();
-            return View(products);
+            return View(_mapper.Map<List<ProductViewModel>>(products));
         }
         public IActionResult Remove(int id)
         {
