@@ -19,16 +19,12 @@
         <label for="Stock" class="form-label">Ürün Stok</label>
         <input type="number" asp-for="Stock" class="form-control" />
         <span class="text-danger" asp-validation-for="Stock"></span>
-
     </div>
     <div class="mb-3">
-        @* <label for="Color" class="form-label">Ürün Renk</label>
-        <input asp-for="Color" class="form-control" /> *@
         <select class="form-select" asp-for="Color" asp-items="@ViewBag.ColorSelect">
             <option value="">Seçim Yapınız</option>
         </select>
         <span class="text-danger" asp-validation-for="Color"></span>
-
     </div>
     <div class="form-check">
         <input class="form-check-input" asp-for="IsPublish">
@@ -47,24 +43,20 @@
         </div>
     }
     <span class="text-danger" asp-validation-for="Expire"></span>
-
     <div class="form-floating">
         <textarea asp-for="Description" class="form-control" placeholder="Açıklama yazınız" style="height: 100px"></textarea>
         <label for="Description">Ürün Açıklama</label>
         <span class="text-danger" asp-validation-for="Description"></span>
-
     </div>
     <div class="mb-3">
         <label asp-for="PublishDate" class="form-label">Ürün Yayınlanma Tarihi</label>
         <input asp-for="PublishDate" class="form-control" />
         <span class="text-danger" asp-validation-for="PublishDate"></span>
-
     </div>
     <div class="mb-3">
         <label asp-for="EmailAddress" class="form-label">Email</label>
         <input asp-for="EmailAddress" class="form-control" />
         <span class="text-danger" asp-validation-for="EmailAddress"></span>
-
     </div>
     <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 </form>
