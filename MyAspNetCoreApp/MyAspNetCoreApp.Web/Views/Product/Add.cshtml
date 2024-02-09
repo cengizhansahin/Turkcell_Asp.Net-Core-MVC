@@ -28,6 +28,8 @@
         <select class="form-select" asp-for="Color" asp-items="@ViewBag.ColorSelect">
             <option value="">Seçim Yapınız</option>
         </select>
+        <span class="text-danger" asp-validation-for="Color"></span>
+
     </div>
     <div class="form-check">
         <input class="form-check-input" asp-for="IsPublish">
@@ -45,6 +47,8 @@
             </label>
         </div>
     }
+    <span class="text-danger" asp-validation-for="Expire"></span>
+
     <div class="form-floating">
         <textarea asp-for="Description" class="form-control" placeholder="Açıklama yazınız" style="height: 100px"></textarea>
         <label for="Description">Ürün Açıklama</label>
@@ -54,6 +58,8 @@
     <div class="mb-3">
         <label asp-for="PublishDate" class="form-label">Ürün Yayınlanma Tarihi</label>
         <input asp-for="PublishDate" class="form-control" />
+        <span class="text-danger" asp-validation-for="PublishDate"></span>
+
     </div>
     <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 </form>
