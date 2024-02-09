@@ -6,6 +6,7 @@ namespace MyAspNetCoreApp.Web.ViewModels
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "İsim alanı boş olamaz!")]
+        [StringLength(50, ErrorMessage = "İsim alanına en fazla 50 karakter girilebilir!")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Fiyat alanı boş olamaz!")]
         [Range(1, 1000, ErrorMessage = "Fiyat alanı 1 ile 1000 arasında bir değer olmalıdır!")]
@@ -13,10 +14,10 @@ namespace MyAspNetCoreApp.Web.ViewModels
         public decimal? Price { get; set; }
         [Required(ErrorMessage = "Stok alanı boş olamaz!")]
         [Range(1, 200, ErrorMessage = "Stok alanı 1 ile 200 arasında bir değer olmalıdır!")]
-
         public int? Stock { get; set; }
-        [Required(ErrorMessage = "Açıklama alanı boş olamaz!")]
 
+        [Required(ErrorMessage = "Açıklama alanı boş olamaz!")]
+        [StringLength(50, MinimumLength = 50, ErrorMessage = "İsim alanına en az 50 en fazla 300 karakter içerebilir!")]
         public string Description { get; set; }
         [Required(ErrorMessage = "Renç seçimi boş olamaz!")]
 
