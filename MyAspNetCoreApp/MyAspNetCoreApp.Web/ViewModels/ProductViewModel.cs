@@ -1,15 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyAspNetCoreApp.Web.ViewModels
 {
     public class ProductViewModel
     {
         public int Id { get; set; }
+        [Remote(action: "HasProductName", controller: "Product")]
         [Required(ErrorMessage = "İsim alanı boş olamaz!")]
         [StringLength(50, ErrorMessage = "İsim alanına en fazla 50 karakter girilebilir!")]
         public string Name { get; set; }
 
-        //[RegularExpression(@"^[0-9]+(\.[0-9]{1,2})?$", ErrorMessage = "Noktadan sonra en fazla iki basamak girebilirsiniz!")]
         [Required(ErrorMessage = "Fiyat alanı boş olamaz!")]
         [Range(1, 1000, ErrorMessage = "Fiyat alanı 1 ile 1000 arasında bir değer olmalıdır!")]
         public decimal? Price { get; set; }
