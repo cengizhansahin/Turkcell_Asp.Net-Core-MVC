@@ -74,6 +74,10 @@ namespace MyAspNetCoreApp.Web.Controllers
 
             // 2.Yöntem
             //Product newProduct = new() { Name = Name, Price = Price, Color = Color, Stock = Stock };
+            if (!string.IsNullOrEmpty(newProduct.Name) && newProduct.Name.StartsWith("A"))
+            {
+                ModelState.AddModelError(string.Empty, "Ürün ismi A harfi ile başlayamaz!");
+            }
             if (ModelState.IsValid)
             {
                 _context.Products.Add(_mapper.Map<Product>(newProduct));
