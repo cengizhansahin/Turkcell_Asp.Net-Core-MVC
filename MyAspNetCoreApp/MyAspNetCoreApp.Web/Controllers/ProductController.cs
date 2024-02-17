@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
@@ -74,33 +75,43 @@ namespace MyAspNetCoreApp.Web.Controllers
 
             // 2.Yöntem
             //Product newProduct = new() { Name = Name, Price = Price, Color = Color, Stock = Stock };
-            if (!string.IsNullOrEmpty(newProduct.Name) && newProduct.Name.StartsWith("A"))
-            {
-                ModelState.AddModelError(string.Empty, "Ürün ismi A harfi ile başlayamaz!");
-            }
-            if (ModelState.IsValid)
-            {
-                _context.Products.Add(_mapper.Map<Product>(newProduct));
-                _context.SaveChanges();
-                TempData["status"] = "Ürün başarıyla eklendi.";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.Expire = new Dictionary<string, int>()
+            //if (!string.IsNullOrEmpty(newProduct.Name) && newProduct.Name.StartsWith("A"))
+            //{
+            //    ModelState.AddModelError(string.Empty, "Ürün ismi A harfi ile başlayamaz!");
+            //}
+            ViewBag.Expire = new Dictionary<string, int>()
                 {
                     {"1 Ay",1 },
                     {"3 Ay",3},
                     {"6 Ay",6 },
                     {"12 Ay",12 }
                 };
-                ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
+            ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
                 {
                 new ColorSelectList(){Data="Mavi",Value="Mavi"},
                 new ColorSelectList(){Data="Kırmızı",Value="2"},
                 new ColorSelectList(){Data="Sarı",Value="3"}
                 }, "Value", "Data");
-                return View(newProduct);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    throw new Exception("Db hatası!");
+                    _context.Products.Add(_mapper.Map<Product>(newProduct));
+                    _context.SaveChanges();
+                    TempData["status"] = "Ürün başarıyla eklendi.";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Ürün kaydedilirken bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz.");
+                    return View();
+                }
+            }
+            else
+            {
+
+                return View();
             }
 
 
