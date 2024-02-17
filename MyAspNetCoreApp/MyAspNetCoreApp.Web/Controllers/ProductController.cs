@@ -96,7 +96,7 @@ namespace MyAspNetCoreApp.Web.Controllers
             {
                 try
                 {
-                    throw new Exception("Db hatası!");
+                    //throw new Exception("Db hatası!");
                     _context.Products.Add(_mapper.Map<Product>(newProduct));
                     _context.SaveChanges();
                     TempData["status"] = "Ürün başarıyla eklendi.";
