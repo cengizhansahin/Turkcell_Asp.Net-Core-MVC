@@ -1,7 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Update";
 }
-@model Product
+@model ProductViewModel
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+}
 <h1>Ürün Güncelleme</h1>
 
 <form asp-controller="Product" asp-action="Update" method="post">
@@ -9,14 +12,19 @@
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Ürün İsmi</label>
         <input asp-for="Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Name"></span>
     </div>
     <div class="mb-3">
         <label for="Price" class="form-label">Ürün Fiyat</label>
         <input asp-for="Price" class="form-control" />
+        <span class="text-danger" asp-validation-for="Price"></span>
+
     </div>
     <div class="mb-3">
         <label for="Stock" class="form-label">Ürün Stok</label>
         <input asp-for="Stock" class="form-control" />
+        <span class="text-danger" asp-validation-for="Stock"></span>
+
     </div>
     <div class="mb-3">
         @* <label for="Color" class="form-label">Ürün Renk</label>
@@ -24,12 +32,16 @@
         <select class="form-select" asp-for="Color" asp-items="@ViewBag.ColorSelect">
             <option value="">Seçim Yapınız</option>
         </select>
+        <span class="text-danger" asp-validation-for="Color"></span>
+
     </div>
     <div class="form-check">
         <input class="form-check-input" asp-for="IsPublish">
         <label class="form-check-label" for="IsPublish">
             Yayınlansın mı?
         </label>
+        <span class="text-danger" asp-validation-for="IsPublish"></span>
+
     </div>
     <span>Ürün kaç ay satışta kalacak?</span>
     @foreach (var item in ViewBag.Expire as Dictionary<string, int>)
@@ -46,15 +58,21 @@
             <label class="form-check-label" for="Expire_@item.Key">
                 @item.Key
             </label>
+            <span class="text-danger" asp-validation-for="Expire"></span>
+
         </div>
     }
     <div class="form-floating">
         <textarea asp-for="Description" class="form-control" placeholder="Açıklama yazınız" style="height: 100px"></textarea>
         <label for="Description">Ürün Açıklama</label>
+        <span class="text-danger" asp-validation-for="Description"></span>
+
     </div>
     <div class="mb-3">
         <label asp-for="PublishDate" class="form-label">Ürün Yayınlanma Tarihi</label>
         <input asp-for="PublishDate" class="form-control" />
+        <span class="text-danger" asp-validation-for="PublishDate"></span>
+
     </div>
     <button type="submit" class="btn btn-outline-primary">Güncelle</button>
 </form>
