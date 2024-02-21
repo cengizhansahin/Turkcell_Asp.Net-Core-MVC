@@ -10,7 +10,7 @@
     @await RenderSectionAsync("Css", required: false)
 </head>
 <body>
-    <partial name="_HeaderPartialView" />
+    @await Html.PartialAsync("_HeaderPartialView");
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
