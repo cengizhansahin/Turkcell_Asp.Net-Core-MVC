@@ -10,6 +10,9 @@
         <partial name="~/PartialViews/_ProductListPartialView.cshtml" model="ViewBag.ProductListPartialViewModel" />
     </div>
     <div class="col-md-4">
-        @await Component.InvokeAsync("ProductList", new { type = 2 })
+        @* 1.yol *@
+        @* @await Component.InvokeAsync("ProductList", new { type = 2 }) *@
+        @* 2.yol *@
+        <vc:product-list type="2"></vc:product-list>
     </div>
 </div>
