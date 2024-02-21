@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyAspNetCoreApp.Web.Models;
 using MyAspNetCoreApp.Web.ViewModels;
 
@@ -15,11 +16,11 @@ namespace MyAspNetCoreApp.Web.Views.Shared.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var viewmodels = _context.Products.Select(x => new ProductListComponentViewModel()
+            var viewmodels = await _context.Products.Select(x => new ProductListComponentViewModel()
             {
                 Name = x.Name,
                 Description = x.Description,
-            }).ToList();
+            }).ToListAsync();
             return View(viewmodels);
         }
     }
