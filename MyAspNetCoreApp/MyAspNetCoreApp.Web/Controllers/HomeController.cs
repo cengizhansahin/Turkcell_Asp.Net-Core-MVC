@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
 using MyAspNetCoreApp.Web.ViewModels;
@@ -32,6 +31,14 @@ namespace MyAspNetCoreApp.Web.Controllers
 
         public IActionResult Privacy()
         {
+            var products = _appDbContext.Products.OrderByDescending(x => x.Id).Select(x => new ProductPartialViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Price = x.Price,
+                Stock = x.Stock,
+            }).ToList();
+            ViewBag.ProductListPartialViewModel = new ProductListPartialViewModel() { Products = products };
             return View();
         }
 
