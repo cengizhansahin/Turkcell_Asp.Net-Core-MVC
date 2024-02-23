@@ -110,7 +110,6 @@ namespace MyAspNetCoreApp.Web.Controllers
             }
             else
             {
-
                 return View();
             }
 
