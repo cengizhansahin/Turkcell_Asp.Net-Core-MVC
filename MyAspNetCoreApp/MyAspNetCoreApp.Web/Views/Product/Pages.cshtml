@@ -1,14 +1,13 @@
-﻿@{
-    ViewData["Title"] = "Index";
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Pages";
 }
-@model List<ProductViewModel>
-<h1>Ürünler</h1>
-@if (TempData["status"] != null)
-{
-    <div class="alert alert-primary" role="alert">
-        @TempData["status"]
-    </div>
-}
+
+<h1>Pages</h1>
+
+<h2>page: @ViewBag.page</h2>
+<h2>pageSize: @ViewBag.pageSize</h2>
+
 <a asp-controller="Product" asp-action="Add">Ürün Ekle</a>
 <table class="table">
     <thead>

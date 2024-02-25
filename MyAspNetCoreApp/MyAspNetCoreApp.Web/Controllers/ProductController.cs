@@ -36,9 +36,16 @@ namespace MyAspNetCoreApp.Web.Controllers
             var products = _context.Products.ToList();
             return View(_mapper.Map<List<ProductViewModel>>(products));
         }
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult Pages(int page, int pageSize)
         {
-            var result = await _context.Products.FindAsync(id);
+            var products = _context.Products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.page = page;
+            ViewBag.pageSize = pageSize;
+            return View(_mapper.Map<List<ProductViewModel>>(products));
+        }
+        public async Task<IActionResult> GetById(int productId)
+        {
+            var result = await _context.Products.FindAsync(productId);
             if (result == null)
                 return NotFound("Ürün bulunamadı");
             return View(_mapper.Map<ProductViewModel>(result));
