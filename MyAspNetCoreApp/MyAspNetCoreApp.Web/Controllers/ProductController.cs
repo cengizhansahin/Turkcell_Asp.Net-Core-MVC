@@ -36,6 +36,13 @@ namespace MyAspNetCoreApp.Web.Controllers
             var products = _context.Products.ToList();
             return View(_mapper.Map<List<ProductViewModel>>(products));
         }
+        public async Task<IActionResult> GetById(int id)
+        {
+            if (id == null)
+                return NotFound("Id bulunamadı!");
+            var result = await _context.Products.FindAsync(id);
+            return View(_mapper.Map<ProductViewModel>(result));
+        }
         public IActionResult Remove(int id)
         {
             //_productRepository.RemoveProduct(id);
