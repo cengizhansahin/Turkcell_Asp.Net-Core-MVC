@@ -2,7 +2,8 @@
 
 namespace MyAspNetCoreApp.Web.TagHelpers
 {
-    public class ImageThumbnail : TagHelper
+    [HtmlTargetElement("thumbnail")]
+    public class ImageThumbnailTagHelper : TagHelper
     {
         public string ImageSrc { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
