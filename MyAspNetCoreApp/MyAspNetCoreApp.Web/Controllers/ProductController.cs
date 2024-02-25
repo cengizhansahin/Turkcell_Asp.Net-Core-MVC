@@ -38,15 +38,16 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
         public async Task<IActionResult> GetById(int id)
         {
-            if (id == null)
-                return NotFound("Id bulunamadı!");
             var result = await _context.Products.FindAsync(id);
+            if (result == null)
+                return NotFound("Ürün bulunamadı");
             return View(_mapper.Map<ProductViewModel>(result));
         }
         public IActionResult Remove(int id)
         {
-            //_productRepository.RemoveProduct(id);
-            Product deletedProduct = _context.Products.FirstOrDefault(p => p.Id == id);
+            var deletedProduct = _context.Products.Find(id);
+            if (deletedProduct == null)
+                return NotFound("Silinecek ürün bulunamadı!");
             _context.Products.Remove(deletedProduct);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -109,7 +110,7 @@ namespace MyAspNetCoreApp.Web.Controllers
                     TempData["status"] = "Ürün başarıyla eklendi.";
                     return RedirectToAction("Index");
                 }
-                catch (Exception ex)
+                catch
                 {
                     ModelState.AddModelError(string.Empty, $"Ürün kaydedilirken bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz.");
                     return View();
