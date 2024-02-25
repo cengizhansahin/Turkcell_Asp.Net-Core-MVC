@@ -1,16 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var product = new Product { Id = 1, Name = "Kalem 11", Price = 100, Stock = 200 };
 }
 @section Scripts {
-    <script type="text/javascript">
 
-    </script>
 }
 @section Css {
-    <link href="~/css/example.css" rel="stylesheet" />
-    <style>
 
-    </style>
 }
 <div class="row">
     <div class="col-md-4">
@@ -22,4 +18,12 @@
         @* 2.yol *@
         <vc:product-list type="1"></vc:product-list>
     </div>
+    <div class="col-md-4">
+        <italic>AspNet.Core</italic>
+        <product-show product="@product"></product-show>
+    </div>
+</div>
+<div>
+    <img src="/images/car.jpg" />
+    <image-thumbnail image-src="/images/car.jpg"></image-thumbnail>
 </div>
