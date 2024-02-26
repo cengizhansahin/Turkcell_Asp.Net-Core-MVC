@@ -32,17 +32,17 @@ app.UseAuthorization();
 //    pattern: "blog/{*article}",
 //    defaults: new { controller = "Blog", action = "Article", });
 
-app.MapControllerRoute(
-    name: "article",
-    pattern: "{controller=Blog}/{action=Article}/{name}/{id}");
+//app.MapControllerRoute(
+//    name: "article",
+//    pattern: "{controller=Blog}/{action=Article}/{name}/{id}");
 
-app.MapControllerRoute(
-    name: "pages",
-    pattern: "{controller}/{action}/{page}/{pageSize}");
+//app.MapControllerRoute(
+//    name: "pages",
+//    pattern: "{controller}/{action}/{page}/{pageSize}");
 
-app.MapControllerRoute(
-    name: "getbyid",
-    pattern: "{controller}/{action}/{productid}");
+//app.MapControllerRoute(
+//    name: "getbyid",
+//    pattern: "{controller}/{action}/{productid}");
 
 app.MapControllerRoute(
     name: "default",
