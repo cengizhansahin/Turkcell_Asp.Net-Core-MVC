@@ -36,7 +36,7 @@ namespace MyAspNetCoreApp.Web.Controllers
             var products = _context.Products.ToList();
             return View(_mapper.Map<List<ProductViewModel>>(products));
         }
-        [Route("[controller]/[action]/{page}/{pageSize}")]
+        [Route("[controller]/[action]/{page}/{pageSize}", Name = "productpage")]
 
         public IActionResult Pages(int page, int pageSize)
         {
@@ -45,7 +45,7 @@ namespace MyAspNetCoreApp.Web.Controllers
             ViewBag.pageSize = pageSize;
             return View(_mapper.Map<List<ProductViewModel>>(products));
         }
-        [Route("urunler/urun/{productId}")]
+        [Route("urunler/urun/{productId}", Name = "product")]
         public async Task<IActionResult> GetById(int productId)
         {
             var result = await _context.Products.FindAsync(productId);

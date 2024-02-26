@@ -43,12 +43,12 @@
                 <td>
                     <a asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a>
                     <a asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
-                    <a asp-controller="Product" asp-action="GetById" asp-route-productId="@item.Id">Detay</a>
+                    <a asp-route="product" asp-route-productId="@item.Id">Detay</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 <a asp-controller="blog" asp-action="article" asp-route-name="makale-ismi" asp-route-id="2">Makaleye Git</a>
-<a asp-controller="Product" asp-action="Pages" asp-route-page="1" asp-route-pageSize="3">1. sayfadan 3 ürün ver</a>
-<a asp-controller="Product" asp-action="Pages" asp-route-page="2" asp-route-pageSize="3">2. sayfadan 3 ürün ver</a>
+<a asp-route="productpage" asp-route-page="1" asp-route-pageSize="3">1. sayfadan 3 ürün ver</a>
+<a asp-route="productpage" asp-route-page="2" asp-route-pageSize="3">2. sayfadan 3 ürün ver</a>
